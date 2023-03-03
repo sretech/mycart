@@ -1,0 +1,13 @@
+.filters{
+    padding: 15px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    color: rgb(17, 17, 17);
+    height: 90vh;
+    
+}
+.filterCard{
+    border: 0px;
+}
+

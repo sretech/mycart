@@ -1,0 +1,31 @@
+.parentContainer{
+    display: flex;
+}
+.productContainer{
+    display: flex;
+    width: 90%;
+    padding: 15px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.filterContainer{
+    display: flex;
+    padding: 3px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.fixed-column {
+    position: sticky;
+    left: 0;
+    z-index: 1; /* Add a higher z-index value to make sure the column stays on top */
+  }
+
+  .spinner-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
