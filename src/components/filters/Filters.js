@@ -5,7 +5,7 @@ import './Filters.css'
 export default function Filters() {
     return (
         <div className='filters'>
-            <Card className='filterCard' bg='lightgray'>
+            <Card className='filterCard' border='info'>
                 <Card.Body>
                     <span className='section'>
                         <Form.Label>Sort By Price</Form.Label>

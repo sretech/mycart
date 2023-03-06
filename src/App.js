@@ -9,28 +9,40 @@ import Header from './components/header/Header';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
-  const [state, dispatch] = useReducer(productReducer, { cart: [], products: [], isLoading:false });
+  const [state, dispatch] = useReducer(productReducer, { cart: [], products: [], isLoading: false });
   let fetchData = async () => {
-    dispatch({type:ACTION_TYPES.UPDATE_IS_LOADING, payload:{isLoading:true}});
-    const response = await fetch('https://dummyjson.com/products');
-    const data = await response.json();
-    dispatch({ payload: { products: data.products }, type: ACTION_TYPES.SET_PRODUCTS });
-    dispatch({type:ACTION_TYPES.UPDATE_IS_LOADING, payload:{isLoading:false}});
+    try {
+      dispatch({ type: ACTION_TYPES.UPDATE_IS_LOADING, payload: { isLoading: true } });
+      const response = await fetch('https://dummyjson.com/products?limit=29');
+      const data = await response.json();
+      dispatch({ payload: { products: data.products }, type: ACTION_TYPES.SET_PRODUCTS });
+      dispatch({ type: ACTION_TYPES.UPDATE_IS_LOADING, payload: { isLoading: false } });
+    } catch (e) {
+      console.log("Failed to fetch Data spucha");
+    }
   }
   useEffect(() => {
+
     fetchData();
+
+
   }, []);
 
   return (
     <Router>
       <AppContext.Provider value={{ state, dispatch }}>
-        <Header />
-        <div>
-          <Routes>
-            <Route path="/" exact element={<Products />} />
-            <Route path="/cart" exact element={<Cart />} />
-          </Routes>
+        <div className='app-container'>
+          <header>
+            <Header></Header>
+          </header>
+          <main>
+              <Routes>
+              <Route path="/" exact element={<Products />} />
+              <Route path="/cart" exact element={<Cart />} />
+            </Routes>            
+          </main>
         </div>
+
       </AppContext.Provider>
     </Router>
   );

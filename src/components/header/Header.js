@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Container, Dropdown, FormControl, Nav, Navbar } from 'react-bootstrap'
+import { Badge, Container, FormControl, Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './Header.css'
 import {SiShopify} from 'react-icons/si'
@@ -16,18 +16,16 @@ export default function Header() {
                  <Link to='/'>E-Cart</Link>
                 </Navbar.Brand>
                 <Navbar.Text className='search'>
-                    <FormControl placeholder='Search a product' style={{width:"500px"}} className='m-auto formControll'></FormControl>
+                    <FormControl placeholder='Search a product' 
+                    style={{width:"500px"}} className='m-auto formControll'></FormControl>
                 </Navbar.Text>
                 <Nav>
-                    <Dropdown>
-                        <Dropdown.Toggle variant="success">
-                        <HiShoppingCart color="white" style={{height:20, width:20}}></HiShoppingCart>
+                    <Link to="/cart">
+                    <Badge variant="success">
+                    <HiShoppingCart color="white" style={{height:20, width:20}}></HiShoppingCart>
                            {state.cart?state.cart.length:0}
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu style={{minWidth:320}}>
-                        {state.cart ? state.cart.length>0?state.cart.length:"Cart is empty..":"Cart is empty.."}
-                        </Dropdown.Menu>
-                    </Dropdown>
+                    </Badge>
+                    </Link>
                 </Nav>
             </Container>
         </Navbar>

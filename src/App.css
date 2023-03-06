@@ -1,22 +1,10 @@
-.app-main-content {
-  display: flex;
-}
 
-.app-products-content {
-  flex: 1;
-  flex-basis: 80%;
-}
 
-.app-cart-content {
-  flex: 1;
-  flex-basis: 20%;
-}
-
-a{
+a {
   text-decoration: none !important;
   color: inherit !important;
 }
 
-Navbar{
+Navbar {
   height: 40% !important;
 }

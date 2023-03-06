@@ -9,26 +9,23 @@ export default function Products() {
   const { state } = useContext(AppContext);
   return (
     <div className='parentContainer'>
-      <div className='filterContainer'>
+      <aside className='filterContainer'>
         <Filters></Filters>
-      </div>
+      </aside>
       <div className='productContainer'>
         {
-          state.isLoading && 
-          <div className='spinner-container' style={{verticalAlign:"middle"}}>
+          state.isLoading &&
+          <div className='spinner-container' style={{ verticalAlign: "middle" }}>
             <Spinner animation="grow" variant="primary" />
             <Spinner animation="grow" variant="secondary" />
             <Spinner animation="grow" variant="success" />
-            <Spinner animation="grow" variant="danger" />
-            <Spinner animation="grow" variant="warning" />
-            <Spinner animation="grow" variant="info" />
-            <Spinner animation="grow" variant="light" />
-            <Spinner animation="grow" variant="dark" />
-          </div>}
+          </div>
+        }
         {
           state.products.map(product => (
             <Product product={product} key={product.id}></Product>
-          ))}
+          ))
+        }
       </div>
     </div>
   )
